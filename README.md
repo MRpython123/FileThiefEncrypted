@@ -6,4 +6,4 @@ After attacker runs the CC_server.py on his computer and the victim runs the exe
   1. pwd - check the current location on in the victim's filesystem
   2. cd \<directory\> - switching the directory (supports both absolute and relative paths. supports ".." argument as well)
   3. ls - shows all the files and directories of the current directory
-  4. download \<filename\> - steals (downloads) a file from a victims computer (NO ABBSOLUTE PATH! IN ORDER TO DOWNLOAD, FIRST MMOVE TO THE DIRECTORY OF THE DESIRED FILE). The file transfer is encrypted using the symmetric encryption AES algorithm
+  4. download \<filename\> - steals (downloads) a file from a victims computer (NO ABSOLUTE PATH! IN ORDER TO DOWNLOAD, FIRST MOVE TO THE DIRECTORY OF THE DESIRED FILE). The file transfer is encrypted using the symmetric encryption AES algorithm
