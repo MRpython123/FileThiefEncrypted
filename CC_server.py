@@ -6,8 +6,8 @@ from Crypto.Cipher import AES
 
 
 def get_data_from_cipher(cipher):
-    key = b"SymmetricKeyMike" # choose your own encryption key 16 chars long (if you wish)
-    nonce = b"SymmetricKeyNce" # choose your own nonce 16 chars long (if you wish)
+    key = b"SymmetricKeyMike" # choose your own encryption key 16 chars long (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
+    nonce = b"SymmetricKeyNce" # choose your own nonce 16 chars long (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
     data = AES.new(key, AES.MODE_EAX, nonce)
     return data.decrypt(cipher)
 
