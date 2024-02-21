@@ -7,7 +7,7 @@ import subprocess
 
 def get_cipher_from_data(data):
     key = b"SymmetricKeyMike" # CHANGE THE ENCRYPTION KEY (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
-    nonce = b"SymmetricKeyNce" # CHANGE THE ENCRYPTION NONCE (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
+    nonce = b"SymmetricNceMike" # CHANGE THE ENCRYPTION NONCE (IF YOU WISH. MUST BE THE SAME ON BOTH SIDES)
     cipher = AES.new(key, AES.MODE_EAX, nonce)
     return cipher.encrypt(data)
 
